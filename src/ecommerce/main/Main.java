@@ -48,7 +48,7 @@ public class Main {
         // ===== Test Case 5: Expired product =====
         System.out.println("===== Test Case 5: Expired product =====");
         Product expiredCheese = new ExpirableProduct("ExpiredCheese", 100, 100,0.4, LocalDate.of(2020, 1, 1));
-        c2.getCart().addToCart(git, 1);
+        c2.getCart().addToCart(expiredCheese, 1);
         c2.checkout();
         System.out.println();
     }
