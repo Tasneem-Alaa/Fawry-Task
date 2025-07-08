@@ -33,37 +33,68 @@ Customers can add products to their cart, handle shipping (for applicable produc
 
 ---
 
-## 🧪 Test Coverage
+## 🧪 Test Cases Explained
 
-When you run the `Main` class, it automatically runs several test scenarios to verify the system functionality:
+This project includes 5 main test cases executed automatically when running the `Main` class. Each test simulates a different real-world scenario in the e-commerce system.
 
-### ✅ 1. Successful Checkout
-- Tests buying valid products (in stock, not expired, enough balance).
-- Expects correct product listing, shipping fee, total amount, and remaining balance.
+---
 
-### ❌ 2. Empty Cart
-- Tests checkout with no items in the cart.
-- Expects the message: `"Cart is empty."`
+### Test Case 1: Successful Checkout
+- **What happens:**  
+  Customer `Tasneem` adds three products to the cart:  
+  - 3 units of Cheese (valid, in stock, not expired)  
+  - 2 units of Biscuits (valid, in stock, not expired)  
+  - 2 units of ScratchCard (non-expirable product)  
+- **Purpose:**  
+  Verify normal checkout with valid items and sufficient balance.  
+- **Expected outcome:**  
+  Products are correctly listed, shipping fees calculated, and remaining balance updated.
 
-### ❌ 3. Insufficient Balance
-- Tests checkout when customer balance is less than total cost.
-- Expects the message: `"Insufficient balance."`
+---
 
-### ❌ 4. Out of Stock
-- Tests adding a quantity exceeding the available stock.
-- Expects the message: `"Not enough stock for: [product name]"`
+### Test Case 2: Checkout with Empty Cart
+- **What happens:**  
+  Customer `Yara` tries to checkout without adding any items to the cart.  
+- **Purpose:**  
+  Verify system handles empty cart correctly.  
+- **Expected outcome:**  
+  Error message: `"Cart is empty."`
 
-### ❌ 5. Expired Product
-- Tests adding expired products to the cart.
-- Expects the message: `"Product expired: [product name]"`
+---
+
+### Test Case 3: Insufficient Balance
+- **What happens:**  
+  Customer `Yara` adds 1 unit of a TV priced at 10,000 EGP, but only has 3,000 EGP balance.  
+- **Purpose:**  
+  Verify system rejects checkout when customer cannot pay total cost.  
+- **Expected outcome:**  
+  Error message: `"Insufficient balance."`
+
+---
+
+### Test Case 4: Quantity Exceeds Stock
+- **What happens:**  
+  Customer `Yara` attempts to add 600 units of Cheese, but only 500 units are in stock.  
+- **Purpose:**  
+  Verify system prevents adding more quantity than available stock.  
+- **Expected outcome:**  
+  Error message: `"Not enough stock for: Cheese"`
+
+---
+
+### Test Case 5: Expired Product
+- **What happens:**  
+  Customer `Yara` adds 1 unit of `ExpiredCheese` which has an expiration date in the past (2020).  
+- **Purpose:**  
+  Verify system rejects expired products during checkout.  
+- **Expected outcome:**  
+  Error message: `"Product expired: ExpiredCheese"`
+
+---
 
 ### Summary
-These tests simulate realistic e-commerce scenarios to ensure:
-- Proper validation of cart items and stock  
-- Correct checkout process and balance handling  
-- Clear and informative error messages
+These tests cover essential validation scenarios for stock, balance, product validity, and cart state to ensure the e-commerce system behaves reliably under common use cases and edge conditions.
 
-All tests run automatically when executing the `Main` class.
 
 ---
 
